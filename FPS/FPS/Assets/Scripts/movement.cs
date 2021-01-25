@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class movement : MonoBehaviour
 {
     private CharacterController controller;
@@ -10,6 +11,8 @@ public class movement : MonoBehaviour
     private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+
+    const float degreesToRadians = Mathf.PI / 180;
 
     public GameObject camera;
 
@@ -26,7 +29,13 @@ public class movement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        float cosPlayer = Mathf.Cos(transform.eulerAngles.y * degreesToRadians);
+        float sinPlayer = Mathf.Sin(transform.eulerAngles.y * degreesToRadians);
+
+        Vector3 move = new Vector3( Input.GetAxis("Horizontal") * cosPlayer + Input.GetAxis("Vertical") * sinPlayer,
+                                    0,
+                                    -Input.GetAxis("Horizontal") * sinPlayer + Input.GetAxis("Vertical") * cosPlayer);
+        
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         if (Input.GetButtonDown("Jump") && groundedPlayer)
