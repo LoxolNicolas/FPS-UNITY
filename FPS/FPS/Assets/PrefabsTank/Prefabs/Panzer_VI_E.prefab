@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1475648284040062625}
   m_Layer: 0
   m_Name: Panzer_VI_E
-  m_TagString: Untagged
+  m_TagString: Team2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,19 +147,6 @@ MonoBehaviour:
   sensitivityY: 3
   caterpillarSpeedLeft: 0
   caterpillarSpeedRight: 0
-  playlist:
-  - {fileID: 8300000, guid: 2312aefdb773b714084f97b2015b015e, type: 3}
-  - {fileID: 8300000, guid: e091a686ad49d0e4399b5db5e2855418, type: 3}
-  - {fileID: 8300000, guid: b9b8ca273d980bc4190505e4fade696d, type: 3}
-  - {fileID: 8300000, guid: e7c36fa9d208f234f9df2ba10d452492, type: 3}
-  - {fileID: 8300000, guid: b1be6b97b65022c47bafd33f3e58b933, type: 3}
-  - {fileID: 8300000, guid: 462e4eeb4068d1a4d8cdbd8e18c7a208, type: 3}
-  - {fileID: 8300000, guid: c696f22e5dbe8594caac0cb8ac8e9c7c, type: 3}
-  - {fileID: 8300000, guid: d336d53382ca1374d98243d26fdf30b1, type: 3}
-  - {fileID: 8300000, guid: 11b07c149a48f8749860fb5fc5c06456, type: 3}
-  audioTank: {fileID: 0}
-  audioSound: {fileID: 0}
-  audioSoldier: {fileID: 0}
 --- !u!1 &1475648283518563017
 GameObject:
   m_ObjectHideFlags: 0
