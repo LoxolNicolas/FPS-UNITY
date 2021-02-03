@@ -258,7 +258,7 @@ MonoBehaviour:
   spawnPrefabs: []
   showRoomGUI: 1
   minPlayers: 2
-  roomPlayerPrefab: {fileID: 7349209153716034812, guid: ba29951f583e5854bac09c337a4836f4,
+  roomPlayerPrefab: {fileID: 5010547771587752826, guid: ba29951f583e5854bac09c337a4836f4,
     type: 3}
   RoomScene: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
   GameplayScene: Assets/Scenes/Map_Guigui.unity
