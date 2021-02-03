@@ -22,15 +22,17 @@ public class BulletManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
-    
+
+
     public void OnTriggerEnter(Collider collision)
     {
         Debug.Log("cc");
         if((collision.gameObject.CompareTag("Team1") && Player.CompareTag("Team2")) || (collision.gameObject.CompareTag("Team2") && Player.CompareTag("Team1"))){
             collision.gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
-            Debug.Log("erqover");
         }
         Destroy(gameObject);
     }
+
+
     
 }

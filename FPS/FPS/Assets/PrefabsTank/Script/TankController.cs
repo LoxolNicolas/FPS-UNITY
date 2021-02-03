@@ -43,7 +43,12 @@ public class TankController : MonoBehaviour
     public AudioSource audioSoldier;
     */
 
-    enum SoundTypeTank { START = 0, RUNNING = 6, TOURELLE = 7 , KLAXON = 8};
+    private GameObject sparkLeft; 
+    private GameObject sparkRight;
+
+    private GameObject smoke;
+
+    //enum SoundTypeTank { START = 0, RUNNING = 6, TOURELLE = 7 , KLAXON = 8};
 
     void PlayerOnKeyboard()
     {
@@ -52,6 +57,11 @@ public class TankController : MonoBehaviour
 
         float speedCaterpillarLeft = CATERPILLAR_STOP;
         float speedCaterpillarRight = CATERPILLAR_STOP;
+
+        //sparkLeft.SetActive(true);
+        //sparkRight.SetActive(true);
+
+        //smoke.SetActive(true);
 
         if(Input.GetKey(KeyCode.LeftArrow) && isStatic || Input.GetKey(KeyCode.LeftArrow) && isMoving)
         {
@@ -97,12 +107,22 @@ public class TankController : MonoBehaviour
         {
             speedCaterpillarLeft = CATERPILLAR_STOP;
             speedCaterpillarRight = CATERPILLAR_STOP;
+
+            //sparkLeft.SetActive(false);
+            //sparkRight.SetActive(false);
+
+            //smoke.SetActive(false);
         }
 
         if(isMoving)
         {
             caterpillarSpeedLeft = CATERPILLAR_SLOW + speedCaterpillarLeft;
             caterpillarSpeedRight = CATERPILLAR_SLOW + speedCaterpillarRight;
+
+            //sparkLeft.SetActive(true);
+            //sparkRight.SetActive(true);
+
+            //smoke.SetActive(true);
         }
         else if(isStatic)
         {
@@ -155,15 +175,19 @@ public class TankController : MonoBehaviour
         caterpillarLeft = transform.GetChild(0).GetComponent<Renderer>();
         caterpillarRight = transform.GetChild(1).GetComponent<Renderer>();
 
+        //sparkLeft = GameObject.Find(caterpillarLeft.name + "/SparkL");
+        //sparkRight = GameObject.Find(caterpillarRight.name + "/SparkR");
+       // smoke = GameObject.Find(caterpillarLeft.name + "/smoke_thin");
+
         /*
         audioTank = gameObject.AddComponent<AudioSource>();
         audioSoldier = gameObject.AddComponent<AudioSource>();
         audioSound = gameObject.AddComponent<AudioSource>();
-
-        StartCoroutine(StartingRoundCoroutine());
-
-        StartCoroutine(SoldierVoiceCoroutine());
         */
+
+        //StartCoroutine(StartingRoundCoroutine());
+
+        //StartCoroutine(SoldierVoiceCoroutine());
     }
 
     void Update()

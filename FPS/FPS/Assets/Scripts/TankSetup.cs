@@ -28,6 +28,11 @@ public class TankSetup : NetworkBehaviour
         }
     }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+    }
+
     void OnDisable()
     {
         if(sceneCamera != null)
