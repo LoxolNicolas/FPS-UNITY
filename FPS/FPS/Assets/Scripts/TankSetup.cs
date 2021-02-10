@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Mirror;
+using TMPro;
 
 public class TankSetup : NetworkBehaviour
 {
@@ -8,9 +9,14 @@ public class TankSetup : NetworkBehaviour
 
     private Camera sceneCamera;
 
+    [SyncVar] public string playerTeam;
+    [SyncVar] public string playerName;
+
     void Start()
     {
-        if(!isLocalPlayer)
+        GetComponentInChildren<TextMeshPro>().text = playerName;
+
+        if (!isLocalPlayer)
         {
             for(int i = 0; i < componentsToDisable.Length; i++)
             {

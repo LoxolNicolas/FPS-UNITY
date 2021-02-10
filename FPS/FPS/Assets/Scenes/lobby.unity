@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 248073711}
   m_Layer: 0
   m_Name: Spawn2
-  m_TagString: Untagged
+  m_TagString: redTeamSpawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248073709}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 157.78671, y: -1.25, z: 11.067698}
+  m_LocalPosition: {x: 157.78671, y: -1, z: 11.067698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 579072842}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 368816152}
   m_Layer: 0
   m_Name: Spawn1
-  m_TagString: Untagged
+  m_TagString: redTeamSpawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368816150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 157.78671, y: -1.25, z: 1.5576973}
+  m_LocalPosition: {x: 157.78671, y: -1, z: 1.5576973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 579072842}
@@ -217,8 +217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 579072842}
   - component: {fileID: 579072841}
-  - component: {fileID: 579072840}
   - component: {fileID: 579072843}
+  - component: {fileID: 579072840}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -235,36 +235,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 579072839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c96e6dd99826849ab1431f94547141, type: 3}
+  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  runInBackground: 1
-  autoStartServerBuild: 1
-  showDebugMessages: 0
-  serverTickRate: 30
-  offlineScene: Assets/Package/Mirror/Examples/Room/Scenes/OfflineScene.unity
-  onlineScene: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
-  transport: {fileID: 579072841}
-  networkAddress: localhost
-  maxConnections: 4
-  disconnectInactiveConnections: 0
-  disconnectInactiveTimeout: 60
-  authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8183365673884050803, guid: aeb7977cf8241fd47bd4a4a4cba3c99d,
-    type: 3}
-  autoCreatePlayer: 1
-  playerSpawnMethod: 1
-  spawnPrefabs: []
-  showRoomGUI: 1
-  minPlayers: 2
-  roomPlayerPrefab: {fileID: 5010547771587752826, guid: ba29951f583e5854bac09c337a4836f4,
-    type: 3}
-  RoomScene: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
-  GameplayScene: Assets/Scenes/Map_Guigui.unity
-  _allPlayersReady: 0
-  roomSlots: []
-  clientIndex: 0
+  showGUI: 1
+  offsetX: 0
+  offsetY: 0
 --- !u!114 &579072841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,12 +289,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 579072839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
+  m_Script: {fileID: 11500000, guid: 82555a2ae91f6d9458e5f59bbde18a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  autoStartServerBuild: 1
+  showDebugMessages: 0
+  serverTickRate: 30
+  offlineScene: Assets/Package/Mirror/Examples/Room/Scenes/OfflineScene.unity
+  onlineScene: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
+  transport: {fileID: 579072841}
+  networkAddress: localhost
+  maxConnections: 4
+  disconnectInactiveConnections: 0
+  disconnectInactiveTimeout: 60
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 8183365673884050803, guid: aeb7977cf8241fd47bd4a4a4cba3c99d,
+    type: 3}
+  autoCreatePlayer: 1
+  playerSpawnMethod: 1
+  spawnPrefabs: []
+  showRoomGUI: 1
+  minPlayers: 1
+  roomPlayerPrefab: {fileID: 8238813305731470392, guid: ba29951f583e5854bac09c337a4836f4,
+    type: 3}
+  RoomScene: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
+  GameplayScene: Assets/Scenes/Map_Guigui.unity
+  _allPlayersReady: 0
+  roomSlots: []
+  clientIndex: 0
 --- !u!1 &608330248
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 608330250}
   m_Layer: 0
   m_Name: Spawn3
-  m_TagString: Untagged
+  m_TagString: greenTeamSpawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608330248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.786705, y: -1.25, z: 9.577698}
+  m_LocalPosition: {x: 2.786705, y: -1, z: 9.577698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 579072842}
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 1959730909}
   m_Layer: 0
   m_Name: Spawn4
-  m_TagString: Untagged
+  m_TagString: greenTeamSpawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -562,7 +562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959730907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.786705, y: -1.25, z: -1.5823021}
+  m_LocalPosition: {x: 2.786705, y: -1, z: -1.5823021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 579072842}
