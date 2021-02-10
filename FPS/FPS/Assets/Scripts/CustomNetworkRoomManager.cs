@@ -42,8 +42,14 @@ public class CustomNetworkRoomManager : NetworkRoomManager
     /// <returns>False to not allow this player to replace the room player.</returns>
     public override bool OnRoomServerSceneLoadedForPlayer(NetworkConnection conn, GameObject roomPlayer, GameObject gamePlayer)
     {
+        if(conn == null)
+        {
+            Debug.Log("null connection");
+            return false;
+        }
         gamePlayer.GetComponent<TankSetup>().playerName = roomPlayer.GetComponent<LobbyPlayer>().playerName; // transmit player name
         gamePlayer.GetComponent<TankSetup>().playerTeam = roomPlayer.GetComponent<LobbyPlayer>().playerTeam; // transmit player team
+
         return true;
     }
 

@@ -14,7 +14,6 @@ public class TankSetup : NetworkBehaviour
 
     void Start()
     {
-        GetComponentInChildren<TextMeshPro>().text = playerName;
 
         if (!isLocalPlayer)
         {
@@ -37,6 +36,8 @@ public class TankSetup : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
+
+        GetComponentInChildren<TextMeshPro>().text = playerName;
     }
 
     void OnDisable()
