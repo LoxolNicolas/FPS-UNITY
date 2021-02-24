@@ -11,7 +11,7 @@ public class PlayerLogic : MonoBehaviour
     public GameObject DeadText;
     public Text HealthText;
     // Start is called before the first frame update
-    void Start()
+    public void OnStart()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);

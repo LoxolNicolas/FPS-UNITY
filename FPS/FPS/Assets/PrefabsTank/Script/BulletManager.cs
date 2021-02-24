@@ -8,7 +8,6 @@ public class BulletManager : MonoBehaviour
     public GameObject Player;
     public int BulletDamage;
     [SerializeField]
-
     
     // Start is called before the first frame update
     void Start()
@@ -23,16 +22,14 @@ public class BulletManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-
     public void OnTriggerEnter(Collider collision)
     {
         Debug.Log("cc");
-        if((collision.gameObject.CompareTag("Team1") && Player.CompareTag("Team2")) || (collision.gameObject.CompareTag("Team2") && Player.CompareTag("Team1"))){
+        if((collision.gameObject.CompareTag("red") && Player.CompareTag("green")) || (collision.gameObject.CompareTag("green") && Player.CompareTag("red"))){
             collision.gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
+            Debug.LogError("cc2");
         }
+        //collision.gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
         Destroy(gameObject);
-    }
-
-
-    
+    }   
 }
