@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class BulletManager : MonoBehaviour
+public class BulletManager : NetworkBehaviour
 {
     public GameObject Player;
     public int BulletDamage;
@@ -21,15 +21,19 @@ public class BulletManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
-
+    [Client]
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("cc");
         if((collision.gameObject.CompareTag("red") && Player.CompareTag("green")) || (collision.gameObject.CompareTag("green") && Player.CompareTag("red"))){
-            collision.gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
-            Debug.LogError("cc2");
+            PlayerShot(collision.gameObject);
         }
-        //collision.gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
         Destroy(gameObject);
     }   
+
+    [Command]
+    private void PlayerShot(GameObject player)
+    {
+        Debug.Log("touché");
+        gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
+    }
 }

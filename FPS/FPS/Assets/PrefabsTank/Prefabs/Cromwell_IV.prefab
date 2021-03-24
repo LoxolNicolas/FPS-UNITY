@@ -595,6 +595,8 @@ GameObject:
   - component: {fileID: 8826518333600693704}
   - component: {fileID: 453825514014874933}
   - component: {fileID: 3435505794703064302}
+  - component: {fileID: -1019544972963353429}
+  - component: {fileID: -1192425908779533869}
   m_Layer: 0
   m_Name: Cromwell_IV
   m_TagString: Untagged
@@ -698,7 +700,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   componentsToDisable:
+  - {fileID: 360237579814046549}
+  - {fileID: 5158651416251065061}
+  - {fileID: 8826518333600693704}
+  - {fileID: 360237579814046548}
   - {fileID: 360237580647227997}
+  - {fileID: 360237580647227994}
   playerTeam: 
   playerName: 
   playerUIPrefab: {fileID: 5000079346150442786, guid: 77e34b1d013e3974eb50abedb51a0ac0,
@@ -797,6 +804,43 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &-1019544972963353429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183365673884050803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+--- !u!114 &-1192425908779533869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183365673884050803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 360237580647227995}
 --- !u!1 &8388784190872338027
 GameObject:
   m_ObjectHideFlags: 0

@@ -215,7 +215,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  componentsToDisable: []
+  componentsToDisable:
+  - {fileID: 6666109669790121841}
+  - {fileID: 1475648284040062626}
+  - {fileID: 1475648284040062625}
+  - {fileID: 7761026249661533513}
+  - {fileID: 1475648283518563022}
+  - {fileID: 1475648283518563023}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerTeam: 
   playerName: 
   playerUIPrefab: {fileID: 5000079346150442786, guid: 77e34b1d013e3974eb50abedb51a0ac0,
