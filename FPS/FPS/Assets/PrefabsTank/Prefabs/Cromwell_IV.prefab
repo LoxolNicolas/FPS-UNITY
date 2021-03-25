@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 360237580647227995}
   - component: {fileID: 360237580647227997}
   - component: {fileID: 360237580647227994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,11 +25,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360237580647227992}
-  m_LocalRotation: {x: 0.17364816, y: -3.3429873e-10, z: 2.6014033e-10, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 0.99000007, z: 0.7300014}
+  m_LocalRotation: {x: 0.17364815, y: -3.6340253e-10, z: 2.6014033e-10, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 0.65820366, z: -0.03675163}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 412651785181495807}
+  m_Father: {fileID: 359177737327002914}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!20 &360237580647227997
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 360237580839616196}
   - component: {fileID: 360237580839616197}
   - component: {fileID: 360237580839616194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 5227153106416511055}
   - component: {fileID: 3881301834955691177}
   - component: {fileID: 453825515091592670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cromwell_IV_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 359177737327002914}
-  - {fileID: 360237580647227995}
   m_Father: {fileID: 5173086081182930784}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0.004, y: 0, z: -0.28}
@@ -364,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3703794072949035361}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4193458185349284707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 2.53}
+  m_LocalPosition: {x: -0, y: 0, z: 3.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 359177737327002914}
@@ -397,7 +396,7 @@ GameObject:
   - component: {fileID: 3469534897454042905}
   - component: {fileID: 4835528556023222396}
   - component: {fileID: 453825515127651238}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cromwell_IV_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,6 +415,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3703794072949035361}
+  - {fileID: 360237580647227995}
   m_Father: {fileID: 412651785181495807}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 533858614028168536}
   - component: {fileID: 1556386113097762656}
   - component: {fileID: 453825514621997723}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cromwell_IV_Track_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +597,8 @@ GameObject:
   - component: {fileID: 3435505794703064302}
   - component: {fileID: -1019544972963353429}
   - component: {fileID: -1192425908779533869}
-  m_Layer: 0
+  - component: {fileID: 7154523447460135476}
+  m_Layer: 8
   m_Name: Cromwell_IV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,11 +702,12 @@ MonoBehaviour:
   syncInterval: 0.1
   componentsToDisable:
   - {fileID: 360237579814046549}
-  - {fileID: 5158651416251065061}
+  - {fileID: 7154523447460135476}
   - {fileID: 8826518333600693704}
   - {fileID: 360237579814046548}
   - {fileID: 360237580647227997}
   - {fileID: 360237580647227994}
+  ennemiLayer: Ennemi
   playerTeam: 
   playerName: 
   playerUIPrefab: {fileID: 5000079346150442786, guid: 77e34b1d013e3974eb50abedb51a0ac0,
@@ -747,7 +749,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183365673884050803}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58cdd090c62f5854dbb8feb00ba30ea4, type: 3}
   m_Name: 
@@ -841,6 +843,29 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 360237580647227995}
+--- !u!114 &7154523447460135476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183365673884050803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f4c6f6828b2ec4da1fd2eac658740b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  cam: {fileID: 360237580647227997}
+  bulletPrefab: {fileID: 2330306499677877753, guid: 8ba94542694d0544587d0e119ef96af4,
+    type: 3}
+  spawnBullet: {fileID: 4193458185349284707}
+  damage: 20
+  range: 150
+  mask:
+    serializedVersion: 2
+    m_Bits: 567
 --- !u!1 &8388784190872338027
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +878,7 @@ GameObject:
   - component: {fileID: 1577774427644685222}
   - component: {fileID: 6548874392349450474}
   - component: {fileID: 453825515748331310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cromwell_IV_Track_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,9 +968,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8313367105932491007}
     m_Modifications:
+    - target: {fileID: 1345736080586224, guid: b07739ad126c6ff46875821c2a3cd124, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1848968934737910, guid: b07739ad126c6ff46875821c2a3cd124, type: 3}
       propertyPath: m_Name
       value: smoke_thin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848968934737910, guid: b07739ad126c6ff46875821c2a3cd124, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4277412065456692, guid: b07739ad126c6ff46875821c2a3cd124, type: 3}
       propertyPath: m_RootOrder
@@ -1053,13 +1086,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8802727850905118884}
     m_Modifications:
+    - target: {fileID: 1338645070452738, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1491359990764140, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
       propertyPath: m_Name
       value: SparkR
       objectReference: {fileID: 0}
+    - target: {fileID: 1491359990764140, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1889050273275062, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889050273275062, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4139479128625290, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
       propertyPath: m_RootOrder
@@ -1132,13 +1177,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8313367105932491007}
     m_Modifications:
+    - target: {fileID: 1338645070452738, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1491359990764140, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
       propertyPath: m_Name
       value: SparkL
       objectReference: {fileID: 0}
+    - target: {fileID: 1491359990764140, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1889050273275062, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889050273275062, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4139479128625290, guid: 18c0a8b63ea8b4448a595b0c24c1384a, type: 3}
       propertyPath: m_RootOrder

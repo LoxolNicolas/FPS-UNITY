@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class BulletManager : NetworkBehaviour
-{
+public class BulletManager : MonoBehaviour
+{/*
     public GameObject Player;
     public int BulletDamage;
     [SerializeField]
-    
+   */ 
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +21,16 @@ public class BulletManager : NetworkBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
-    [Client]
+    
     public void OnTriggerEnter(Collider collision)
     {
-        if((collision.gameObject.CompareTag("red") && Player.CompareTag("green")) || (collision.gameObject.CompareTag("green") && Player.CompareTag("red"))){
-            PlayerShot(collision.gameObject);
-        }
         Destroy(gameObject);
     }   
-
+    /*
     [Command]
     private void PlayerShot(GameObject player)
     {
-        Debug.Log("touché");
         gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
     }
+    */
 }

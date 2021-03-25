@@ -35,7 +35,7 @@ public class ShootBullet : NetworkBehaviour
         if (isLocalPlayer)
         {
             GameObject bullet = Instantiate(bulletPrefab, spawn.transform.position, sens.transform.rotation);
-            bullet.GetComponent<BulletManager>().Player = Player;
+            //bullet.GetComponent<BulletManager>().Player = Player;
         }
     }
 }

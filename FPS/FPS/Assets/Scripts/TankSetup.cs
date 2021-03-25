@@ -8,6 +8,9 @@ public class TankSetup : NetworkBehaviour
     [SerializeField]
     private Behaviour[] componentsToDisable;
 
+    [SerializeField]
+    private string ennemiLayer = "Ennemi";
+
     private Camera sceneCamera;
 
     [SyncVar] public string playerTeam;
@@ -17,7 +20,6 @@ public class TankSetup : NetworkBehaviour
     private GameObject playerUIPrefab;
     private GameObject playerUIInstance;
 
-
     void Start()
     {  
         if (!isLocalPlayer)
@@ -26,6 +28,7 @@ public class TankSetup : NetworkBehaviour
             {
                 componentsToDisable[i].enabled = false;
             }
+            gameObject.layer = LayerMask.NameToLayer(ennemiLayer);
         }
         else
         {
@@ -61,10 +64,5 @@ public class TankSetup : NetworkBehaviour
             sceneCamera.gameObject.SetActive(true);
         }
         Destroy(playerUIInstance);
-    }
-
-    void Update()
-    {
-        
     }
 }
