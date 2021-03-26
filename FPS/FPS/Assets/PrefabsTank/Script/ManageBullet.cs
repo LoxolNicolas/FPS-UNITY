@@ -6,7 +6,7 @@ public class ManageBullet : MonoBehaviour
 {    
     void Start()
     {
-        GetComponentInChildren<Rigidbody>().AddForce(transform.forward * 3000);
+        GetComponentInChildren<Rigidbody>().AddForce(transform.forward * 20000);
         StartCoroutine(DestroyBullet());
     }
 

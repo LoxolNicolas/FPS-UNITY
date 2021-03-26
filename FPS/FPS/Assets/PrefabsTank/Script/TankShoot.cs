@@ -28,9 +28,9 @@ public class TankShoot : NetworkBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && isLocalPlayer)
         {
-            Instantiate(bulletPrefab, spawnBullet.transform.position, spawnBullet.transform.rotation);
+            Instantiate(bulletPrefab, spawnBullet.transform.position, cam.transform.rotation);
             Shoot();
         }
     }
@@ -51,7 +51,11 @@ public class TankShoot : NetworkBehaviour
 
     [Command]
     private void PlayerShot(GameObject player)
-    {       
-        player.GetComponent<PlayerLogic>().TakeDamage(damage);
+    {
+        PlayerLogic p = player.GetComponent<PlayerLogic>();
+        if (!p.isDead)
+        {
+            p.TakeDamage(damage);
+        }
     }
 }
