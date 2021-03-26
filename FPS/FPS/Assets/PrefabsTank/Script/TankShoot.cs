@@ -52,8 +52,9 @@ public class TankShoot : NetworkBehaviour
     [Command]
     private void PlayerShot(GameObject player)
     {
+        Debug.LogError(gameObject.name);
         PlayerLogic p = player.GetComponent<PlayerLogic>();
-        if (!p.isDead)
+        if (p && !p.isDead)
         {
             p.TakeDamage(damage);
         }
