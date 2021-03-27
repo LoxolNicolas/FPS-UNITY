@@ -20,10 +20,22 @@ public class TankShoot : NetworkBehaviour
     [SerializeField]
     private LayerMask mask;
 
+    private GameObject SmokeDestroy;
+    private GameObject FireA;
+    private GameObject FireB;
+
     void Start()
     {
         if (cam == null)
             this.enabled = false;
+
+        SmokeDestroy = GameObject.Find("Fumee");
+        FireA = GameObject.Find("FlameA");
+        FireB = GameObject.Find("FlameB");
+
+        SmokeDestroy.SetActive(false);
+        FireA.SetActive(false);
+        FireB.SetActive(false);
     }
 
     private void Update()

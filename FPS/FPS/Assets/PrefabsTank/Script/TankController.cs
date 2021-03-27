@@ -36,19 +36,17 @@ public class TankController : MonoBehaviour
     private Renderer caterpillarLeft;
     private Renderer caterpillarRight;
 
-    /*
     public AudioClip[] playlist;
     public AudioSource audioTank;
     public AudioSource audioSound;
     public AudioSource audioSoldier;
-    */
 
     private GameObject sparkLeft; 
     private GameObject sparkRight;
 
     private GameObject smoke;
 
-    //enum SoundTypeTank { START = 0, RUNNING = 6, TOURELLE = 7 , KLAXON = 8};
+    enum SoundTypeTank { START = 0, RUNNING = 6, TOURELLE = 7 , KLAXON = 8, SHOOT = 9};
 
     void PlayerOnKeyboard()
     {
@@ -58,10 +56,10 @@ public class TankController : MonoBehaviour
         float speedCaterpillarLeft = CATERPILLAR_STOP;
         float speedCaterpillarRight = CATERPILLAR_STOP;
 
-        //sparkLeft.SetActive(true);
-        //sparkRight.SetActive(true);
+        sparkLeft.SetActive(true);
+        sparkRight.SetActive(true);
 
-        //smoke.SetActive(true);
+        smoke.SetActive(true);
 
         if(Input.GetKey(KeyCode.LeftArrow) && isStatic || Input.GetKey(KeyCode.LeftArrow) && isMoving)
         {
@@ -108,10 +106,10 @@ public class TankController : MonoBehaviour
             speedCaterpillarLeft = CATERPILLAR_STOP;
             speedCaterpillarRight = CATERPILLAR_STOP;
 
-            //sparkLeft.SetActive(false);
-            //sparkRight.SetActive(false);
+            sparkLeft.SetActive(false);
+            sparkRight.SetActive(false);
 
-            //smoke.SetActive(false);
+            smoke.SetActive(false);
         }
 
         if(isMoving)
@@ -119,10 +117,10 @@ public class TankController : MonoBehaviour
             caterpillarSpeedLeft = CATERPILLAR_SLOW + speedCaterpillarLeft;
             caterpillarSpeedRight = CATERPILLAR_SLOW + speedCaterpillarRight;
 
-            //sparkLeft.SetActive(true);
-            //sparkRight.SetActive(true);
+            sparkLeft.SetActive(true);
+            sparkRight.SetActive(true);
 
-            //smoke.SetActive(true);
+            smoke.SetActive(true);
         }
         else if(isStatic)
         {
@@ -137,7 +135,7 @@ public class TankController : MonoBehaviour
             caterpillarSpeedLeft = CATERPILLAR_FAST + speedCaterpillarLeft;
             caterpillarSpeedRight = CATERPILLAR_FAST + speedCaterpillarRight;
 
-            //audioSound.pitch = 1.5f;
+            audioSound.pitch = 1.5f;
         }
         else if(Input.GetKeyUp(KeyCode.LeftShift) && isMoving)
         {
@@ -146,16 +144,21 @@ public class TankController : MonoBehaviour
             caterpillarSpeedLeft = CATERPILLAR_SLOW + speedCaterpillarLeft;
             caterpillarSpeedRight = CATERPILLAR_SLOW + speedCaterpillarRight;
 
-            //audioSound.pitch = 1.0f;
+            audioSound.pitch = 1.0f;
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            /*
             audioTank.clip = playlist[(int)SoundTypeTank.KLAXON];
             audioTank.loop = false;
             audioTank.Play();
-            */
+        }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            audioTank.clip = playlist[(int)SoundTypeTank.SHOOT];
+            audioTank.loop = false;
+            audioTank.Play();
         }
     }
 
@@ -175,19 +178,17 @@ public class TankController : MonoBehaviour
         caterpillarLeft = transform.GetChild(0).GetComponent<Renderer>();
         caterpillarRight = transform.GetChild(1).GetComponent<Renderer>();
 
-        //sparkLeft = GameObject.Find(caterpillarLeft.name + "/SparkL");
-        //sparkRight = GameObject.Find(caterpillarRight.name + "/SparkR");
-       // smoke = GameObject.Find(caterpillarLeft.name + "/smoke_thin");
+        sparkLeft = GameObject.Find(caterpillarLeft.name + "/SparkL");
+        sparkRight = GameObject.Find(caterpillarRight.name + "/SparkR");
+        smoke = GameObject.Find(caterpillarLeft.name + "/smoke_thin");
 
-        /*
         audioTank = gameObject.AddComponent<AudioSource>();
         audioSoldier = gameObject.AddComponent<AudioSource>();
         audioSound = gameObject.AddComponent<AudioSource>();
-        */
 
-        //StartCoroutine(StartingRoundCoroutine());
+        StartCoroutine(StartingRoundCoroutine());
 
-        //StartCoroutine(SoldierVoiceCoroutine());
+        StartCoroutine(SoldierVoiceCoroutine());
     }
 
     void Update()
@@ -212,7 +213,6 @@ public class TankController : MonoBehaviour
         tankMotor.RotateCamera(cameraRotation);
     }
 
-    /*
     IEnumerator StartingRoundCoroutine()
     {
         yield return new WaitForSeconds(2);
@@ -248,5 +248,4 @@ public class TankController : MonoBehaviour
             }
         }
     }
-    */
 }
