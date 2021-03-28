@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lobby.unity
     guid: d9cdf3457a5428042aba31748e34d4ab
-  - enabled: 1
-    path: Assets/Scenes/Map_Guigui.unity
+  - enabled: 0
+    path: Assets/Scenes/thth.unity
     guid: 386e09da046b8734c84186bad9b7e688
   - enabled: 1
     path: Assets/Package/Mirror/Examples/Room/Scenes/OfflineScene.unity
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
     guid: 48478f4d522f96945b8396f376299d3a
+  - enabled: 1
+    path: Assets/Scenes/Map_Guigui.unity
+    guid: a43f0bc8d313e554f8d547d06ae4f1c7
   m_configObjects: {}

@@ -10,8 +10,9 @@ public class PlayerLogic : MonoBehaviour
     public HealthBar healthBar;
     public GameObject DeadText;
     public Text HealthText;
+    public bool isDead = false;
     // Start is called before the first frame update
-    void Start()
+    public void OnStart()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -26,6 +27,7 @@ public class PlayerLogic : MonoBehaviour
         HealthText.text = currentHealth + "/" + maxHealth;
         if (currentHealth <= 0)
         {
+            HealthText.text = 0 + "/" + maxHealth;
             Dead();
         }
     }
@@ -33,9 +35,9 @@ public class PlayerLogic : MonoBehaviour
     void Dead()
     {
         DeadText.SetActive(true);
-        GetComponent<movement>().enabled = false;
-        GetComponent<ShootBullet>().enabled = false;
-        gameObject.SetActive(false);
+        GetComponent<TankController>().enabled = false;
+        GetComponent<TankShoot>().enabled = false;
+        isDead = true;
     }
 
     private void Update()

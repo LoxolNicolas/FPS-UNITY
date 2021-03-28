@@ -8,6 +8,8 @@ TagManager:
   - Team2
   - redTeamSpawn
   - greenTeamSpawn
+  - red
+  - green
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Ennemi
   - 
   - 
   - 

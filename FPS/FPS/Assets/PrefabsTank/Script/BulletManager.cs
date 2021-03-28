@@ -4,12 +4,11 @@ using UnityEngine;
 using Mirror;
 
 public class BulletManager : MonoBehaviour
-{
+{/*
     public GameObject Player;
     public int BulletDamage;
     [SerializeField]
-
-    
+   */ 
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +21,16 @@ public class BulletManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
-
-
+    
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("cc");
-        if((collision.gameObject.CompareTag("Team1") && Player.CompareTag("Team2")) || (collision.gameObject.CompareTag("Team2") && Player.CompareTag("Team1"))){
-            collision.gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
-        }
         Destroy(gameObject);
+    }   
+    /*
+    [Command]
+    private void PlayerShot(GameObject player)
+    {
+        gameObject.GetComponent<PlayerLogic>().TakeDamage(BulletDamage);
     }
-
-
-    
+    */
 }
