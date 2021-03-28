@@ -1,59 +1,93 @@
 ﻿using UnityEngine;
+using Mirror;
 
-public class TankMotor : MonoBehaviour
+public class TankMotor : NetworkBehaviour
 {
-    private const float LIMITE_BASSE_CANON = 352.0f;
+    public GameObject go;
+
+    private const float LIMITE_BASSE_CANON = -8.0f;
     private const float LIMITE_HAUTE_CANON = 9.1f;
 
-    private Transform Turret;
-    private Transform Canon;
+    public Transform Turret;
+    public Transform Canon;
 
-    private Vector3 velocity;
-    private Vector3 rotation;
-    private Vector3 cameraRotation;
+    [SerializeField]
+    public float playerSpeed = 0;
+    [SerializeField]
+    private float playerRotation = 5.0f;
+    [SerializeField]
+    private float sensitivityX = 3.0f;
+    [SerializeField]
+    private float sensitivityY = 3.0f;
 
-    public void MovePlayer(Vector3 _velocity)
+    [ClientRpc]
+    void RpcMoveTank(Vector3 movement, Vector3 tankRotation)
     {
-        velocity = _velocity;
+        go.GetComponent<Transform>().Rotate(tankRotation); // 
+        go.GetComponent<Transform>().position += movement;
     }
 
-    public void RotatePlayer(Vector3 _rotation)
+    [ClientRpc]
+    private void RpcMoveTurret(float turretElevation, float turretRotation)
     {
-        rotation = _rotation;
-    }
-
-    public void RotateCamera(Vector3 _cameraRotation)
-    {
-        cameraRotation = _cameraRotation;
-    }
-
-    private void PerformMovement()
-    {
-        if(velocity != Vector3.zero)
-        {
-            GetComponent<Transform>().position += velocity * Time.fixedDeltaTime;
-        }
-    }
-
-    private void PerformRotation()
-    {
-        Turret.rotation *= Quaternion.Euler(rotation);
-
-        if(!((Canon.eulerAngles.x - cameraRotation.x) > LIMITE_HAUTE_CANON && (Canon.eulerAngles.x - cameraRotation.x) < LIMITE_BASSE_CANON))
-        {
-            Canon.Rotate(-cameraRotation);
-        }
+        Turret.rotation *= Quaternion.Euler(new Vector3(0, turretRotation, 0));
+        Canon.Rotate(new Vector3(-turretElevation, 0, 0));
     }
 
     void Start()
     {
-        Turret = transform.GetChild(2).GetComponent<Transform>();
-        Canon = transform.GetChild(2).GetChild(0).GetComponent<Transform>();
+        Turret = go.transform.GetChild(2).GetComponent<Transform>();
+        Canon = go.transform.GetChild(2).GetChild(0).GetComponent<Transform>();
+    }
+
+    [Command]
+    void CmdMovePlayer(float vertical, float horizontal, float xMouse, float yMouse)
+    {
+        Vector3 playerMoveZ = go.transform.forward * vertical;
+        Vector3 velocity = playerMoveZ.normalized * playerSpeed;
+        Vector3 movement = velocity * Time.fixedDeltaTime;
+
+        Vector3 tankRotation = new Vector3(0.0f, horizontal * playerRotation * Time.fixedDeltaTime, 0.0f);
+
+        RpcMoveTank(movement, tankRotation);
+
+        float turretRotation = xMouse * sensitivityX;
+        float turretElevation = yMouse * sensitivityY;
+
+        float currentelevation = Canon.localEulerAngles.x;
+        if (currentelevation > 180)
+        {
+            currentelevation -= 360;
+        }
+
+        currentelevation *= -1;
+
+        if ((currentelevation + turretElevation) > LIMITE_HAUTE_CANON)
+        {
+            turretElevation = LIMITE_HAUTE_CANON - currentelevation;
+        }
+
+        if ((currentelevation + turretElevation) < LIMITE_BASSE_CANON)
+        {
+            turretElevation = LIMITE_BASSE_CANON - currentelevation;
+        }
+
+
+        RpcMoveTurret(turretElevation, turretRotation);
+
     }
 
     void FixedUpdate()
     {
-        PerformMovement();
-        PerformRotation();
+        if (NetworkClient.active && isLocalPlayer)
+        {
+            float vertical   = Input.GetAxisRaw("Vertical"); //Deplacement vertical [-1 : 1]
+            float horizontal = Input.GetAxisRaw("Horizontal"); //Deplacement horizontal [-1 : 1]
+
+            float xMouse = Input.GetAxisRaw("Mouse X"); //Deplacement souris sur l'axe X
+            float yMouse = Input.GetAxisRaw("Mouse Y"); //Deplacement souris sur l'axe Y
+
+            CmdMovePlayer(vertical, horizontal, xMouse, yMouse);
+        }
     }
 }

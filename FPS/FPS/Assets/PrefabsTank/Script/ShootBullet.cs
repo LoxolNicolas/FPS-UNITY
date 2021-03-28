@@ -11,7 +11,13 @@ public class ShootBullet : MonoBehaviour
     private GameObject sens;
     [SerializeField]
     private GameObject bulletPrefab;
-    // Start is called before the first frame update
+
+    void Start()
+    {
+        spawn = Player.transform.Find("Turret/Gun/SpawnBullet").gameObject;
+        sens = Player.transform.Find("Turret/Gun").gameObject;
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

@@ -296,7 +296,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   runInBackground: 1
   autoStartServerBuild: 1
-  showDebugMessages: 1
+  showDebugMessages: 0
   serverTickRate: 30
   offlineScene: Assets/Package/Mirror/Examples/Room/Scenes/OfflineScene.unity
   onlineScene: Assets/Package/Mirror/Examples/Room/Scenes/RoomScene.unity
@@ -306,7 +306,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8183365673884050803, guid: aeb7977cf8241fd47bd4a4a4cba3c99d,
+  playerPrefab: {fileID: 453825514001785732, guid: 6c83d015ccb9f374aba96f6688d8277f,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1

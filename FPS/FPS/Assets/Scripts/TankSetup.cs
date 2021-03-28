@@ -9,26 +9,50 @@ public class TankSetup : NetworkBehaviour
 
     private Camera sceneCamera;
 
-    [SyncVar] public string playerTeam;
-    [SyncVar] public string playerName;
-
+    public string playerTeam;
+    public string playerName;
+    
     void Start()
     {
+        GameObject go;
 
-        if (!isLocalPlayer)
+        if(playerTeam == "red")
         {
-            for(int i = 0; i < componentsToDisable.Length; i++)
-            {
-                componentsToDisable[i].enabled = false;
-            }
+            gameObject.transform.Find("Cromwell_IV").gameObject.SetActive(false);
+
+            go = gameObject.transform.Find("Panzer_VI_E").gameObject;
+            gameObject.GetComponent<TankMotor>().go = go;
+            gameObject.GetComponent<TankController>().go = go;
+            gameObject.GetComponent<PlayerLogic>().go = go;
+            gameObject.GetComponent<ShootBullet>().Player = go;
         }
         else
         {
+            gameObject.transform.Find("Panzer_VI_E").gameObject.SetActive(false);
+
+            go = gameObject.transform.Find("Cromwell_IV").gameObject;
+            gameObject.GetComponent<TankMotor>().go = go;
+            gameObject.GetComponent<TankController>().go = go;
+            gameObject.GetComponent<PlayerLogic>().go = go;
+            gameObject.GetComponent<ShootBullet>().Player = go;
+        }
+
+        if (isLocalPlayer)
+        {
             sceneCamera = Camera.main;
 
-            if(sceneCamera != null)
+            if (sceneCamera != null)
             {
                 sceneCamera.gameObject.SetActive(false);
+            }
+
+            go.transform.Find("Turret/Camera").gameObject.SetActive(true);
+        }
+        else
+        {
+            for (int i = 0; i < componentsToDisable.Length; i++)
+            {
+                componentsToDisable[i].enabled = false;
             }
         }
     }
@@ -49,7 +73,7 @@ public class TankSetup : NetworkBehaviour
     }
 
     void Update()
-    {
+    { 
         
     }
 }

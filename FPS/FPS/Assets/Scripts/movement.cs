@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Mirror;
 
 
-public class movement : MonoBehaviour
+public class movement : NetworkBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -35,8 +34,8 @@ public class movement : MonoBehaviour
         Vector3 move = new Vector3( Input.GetAxis("Horizontal") * cosPlayer + Input.GetAxis("Vertical") * sinPlayer,
                                     0,
                                     -Input.GetAxis("Horizontal") * sinPlayer + Input.GetAxis("Vertical") * cosPlayer);
-        
-        controller.Move(move * Time.deltaTime * playerSpeed);
+
+        CmdRequestMove(move);
 
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
@@ -47,5 +46,18 @@ public class movement : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X"));
+    }
+
+    [ClientRpc]
+    void RpcMove(Vector3 move)
+    {
+        controller.Move(move);
+    }
+
+    [Command]
+    void CmdRequestMove(Vector3 move)
+    {
+        move.Normalize();
+        RpcMove(move * Time.deltaTime * playerSpeed);
     }
 }

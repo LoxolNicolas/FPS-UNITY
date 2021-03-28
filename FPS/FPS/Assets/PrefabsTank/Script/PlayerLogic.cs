@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerLogic : MonoBehaviour
 {
+    public GameObject go;
+    
     private int maxHealth = 200;
     private int currentHealth;
     public HealthBar healthBar;
@@ -13,6 +15,10 @@ public class PlayerLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthBar = go.GetComponentInChildren<HealthBar>();
+        HealthText = healthBar.gameObject.GetComponentInChildren<Text>();
+        DeadText = go.transform.Find("Health").Find("DeadText").gameObject;
+
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         HealthText.text = currentHealth + "/" + maxHealth;

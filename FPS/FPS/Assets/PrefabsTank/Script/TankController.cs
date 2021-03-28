@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TankController : MonoBehaviour
 {
+    public GameObject go;
+
     private TankMotor tankMotor; //Pour appel des fonctions de la classe PlayerMotor sans passer par static
 
     private const float TANK_FASTER = 4.5f;
@@ -11,18 +13,6 @@ public class TankController : MonoBehaviour
     private const float CATERPILLAR_STOP = 0.0f;
     private const float CATERPILLAR_SLOW = 0.05f;
     private const float CATERPILLAR_FAST = 0.2f;
-
-    [SerializeField]
-    private float playerSpeed = TANK_SLOWER;
-
-    [SerializeField]
-    private float playerRotation = 5.0f;
-
-    [SerializeField]
-    private float sensitivityX = 3.0f;
-
-    [SerializeField]
-    private float sensitivityY = 3.0f;
 
     [SerializeField]
     private float caterpillarSpeedLeft = CATERPILLAR_STOP;
@@ -80,8 +70,6 @@ public class TankController : MonoBehaviour
                 speedCaterpillarLeft = CATERPILLAR_FAST / 2.0f;
                 speedCaterpillarRight = CATERPILLAR_STOP;
             }
-
-            GetComponent<Transform>().Rotate(new Vector3(0.0f, (playerRotation + (speedCaterpillarLeft * 10.0f)) * Time.fixedDeltaTime, 0.0f));
         }
         else if(Input.GetKey(KeyCode.RightArrow) && isStatic || Input.GetKey(KeyCode.RightArrow) && isMoving)
         {
@@ -100,8 +88,6 @@ public class TankController : MonoBehaviour
                 speedCaterpillarLeft = CATERPILLAR_STOP;
                 speedCaterpillarRight = CATERPILLAR_FAST / 2.0f;
             }
-
-            GetComponent<Transform>().Rotate(new Vector3(0.0f, (-playerRotation - (speedCaterpillarRight * 10.0f)) * Time.fixedDeltaTime, 0.0f));
         }
         else
         {
@@ -132,7 +118,7 @@ public class TankController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift) && isMoving)
         {
-            playerSpeed = TANK_FASTER;
+            tankMotor.playerSpeed = TANK_FASTER;
 
             caterpillarSpeedLeft = CATERPILLAR_FAST + speedCaterpillarLeft;
             caterpillarSpeedRight = CATERPILLAR_FAST + speedCaterpillarRight;
@@ -141,7 +127,7 @@ public class TankController : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.LeftShift) && isMoving)
         {
-            playerSpeed = TANK_SLOWER;
+            tankMotor.playerSpeed = TANK_SLOWER;
 
             caterpillarSpeedLeft = CATERPILLAR_SLOW + speedCaterpillarLeft;
             caterpillarSpeedRight = CATERPILLAR_SLOW + speedCaterpillarRight;
@@ -170,10 +156,10 @@ public class TankController : MonoBehaviour
 
     void Start()
     {
-        tankMotor = GetComponent<TankMotor>();
+        tankMotor = go.GetComponent<TankMotor>();
 
-        caterpillarLeft = transform.GetChild(0).GetComponent<Renderer>();
-        caterpillarRight = transform.GetChild(1).GetComponent<Renderer>();
+        caterpillarLeft = go.transform.GetChild(0).GetComponent<Renderer>();
+        caterpillarRight = go.transform.GetChild(1).GetComponent<Renderer>();
 
         //sparkLeft = GameObject.Find(caterpillarLeft.name + "/SparkL");
         //sparkRight = GameObject.Find(caterpillarRight.name + "/SparkR");
@@ -192,24 +178,8 @@ public class TankController : MonoBehaviour
 
     void Update()
     {
-        float zMovement = Input.GetAxisRaw("Vertical"); //Deplacement vertical [-1 : 1]
-
-        float yRotation = Input.GetAxisRaw("Mouse X"); //Deplacement souris sur l'axe X
-        float xRotation = Input.GetAxisRaw("Mouse Y"); //Deplacement souris sur l'axe Y
-
         PlayerOnKeyboard();
         MoveCaterpillar();
-
-        Vector3 playerMoveZ = transform.forward * zMovement;
-
-        Vector3 velocity = playerMoveZ.normalized * playerSpeed;
-
-        Vector3 rotation = new Vector3(0, yRotation, 0) * sensitivityX;
-        Vector3 cameraRotation = new Vector3(xRotation, 0, 0) * sensitivityY;
-
-        tankMotor.MovePlayer(velocity);
-        tankMotor.RotatePlayer(rotation);
-        tankMotor.RotateCamera(cameraRotation);
     }
 
     /*
